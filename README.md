@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="RVM" src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/master/assets/logo.jpg" />
+    <img alt="RVM" src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/main/assets/logo.jpg" />
 </h1>
 
 <h3 align="center">
