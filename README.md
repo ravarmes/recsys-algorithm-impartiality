@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="RVM" src="https://github.com/ravarmes/recsys-cluster-loss/blob/master/assets/logo.jpg" />
+    <img alt="RVM" src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/master/assets/logo.jpg" />
 </h1>
 
 <h3 align="center">
@@ -9,7 +9,7 @@
 <p align="center">Algoritmo de equidade visando a diminuição da injustiça do grupo em sistemas de recomendação. </p>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ravarmes/recsys-cluster-loss?color=%2304D361">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ravarmes/recsys-algorithm-impartiality?color=%2304D361">
 
   <a href="http://www.linkedin.com/in/rafael-vargas-mesquita">
     <img alt="Made by Rafael Vargas Mesquita" src="https://img.shields.io/badge/made%20by-Rafael%20Vargas%20Mesquita-%2304D361">
@@ -17,8 +17,8 @@
 
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
 
-  <a href="https://github.com/ravarmes/recsys-cluster-loss/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/ravarmes/recsys-cluster-loss?style=social">
+  <a href="https://github.com/ravarmes/recsys-algorithm-impartiality/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/ravarmes/recsys-algorithm-impartiality?style=social">
   </a>
 </p>
 
