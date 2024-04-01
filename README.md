@@ -41,11 +41,12 @@ Como um aplicativo altamente orientado por dados, os sistemas de recomendação 
 * Individual fairness (Justiça do Grupo): Justiça de grupo. Seja \(I\) o conjunto de todos os usuários/itens e \(G = \{G_1, ..., G_{g}\}\) uma partição de usuários/itens em \(g\) grupos, isto é, \(I = \cup_{i \in \{1, ..., g\}} G_i\). Definimos a perda do grupo \(i\) como o erro quadrático médio da estimativa sobre todas as avaliações conhecidas no grupo \(i\):
 
 
+### :notebook_with_decorative_cover: Algoritmo <a name="-algoritmo"/></a>
+
+<img src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/main/assets/recsys-algorithm-impartiality-1.png" width="700">
 
 
 ### :chart_with_upwards_trend: Resultados(s) <a name="-resultados"/></a>
-
-<img src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/main/assets/recsys-algorithm-impartiality-1.png" width="700">
 
 <img src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/main/assets/recsys-algorithm-impartiality-2.png" width="700">
 
