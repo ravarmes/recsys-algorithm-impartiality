@@ -30,33 +30,48 @@
 
 ## :page_with_curl: Sobre o projeto <a name="-sobre"/></a>
 
-Como um aplicativo altamente orientado por dados, os sistemas de recomendação podem ser afetados por distorções de dados, culminando em resultados injustos para diferentes grupos de dados, o que pode ser um motivo a afetar o desempenho do sistema. Portanto, é importante identificar e resolver as questões de injustiça em cenários de recomendação. Desenvolvemos, portanto, um algoritmo de equidade visando a diminuição da injustiça do grupo em sistemas de recomendação. O algoritmo foi testado em dois conjunto de dados existentes (MovieLens e Songs) com duas estratégias de agrupamento de usuários. Conseguimos reduzir a injustiça do grupo nos dois conjuntos de dados, considerando as duas estratégias de agrupamento. 
+Como um aplicativo altamente orientado por dados, os sistemas de recomendação podem ser afetados por distorções de dados, culminando em resultados injustos para diferentes grupos de dados, o que pode ser um motivo a afetar o desempenho do sistema. Portanto, é importante identificar e resolver as questões de injustiça em cenários de recomendação. Desenvolvemos, portanto, um algoritmo de equidade visando a diminuição da injustiça do grupo em sistemas de recomendação. O algoritmo foi testado em três conjuntos de dados existentes (MovieLens, Songs e GoodBooks) com três estratégias de agrupamento de usuários. Conseguimos reduzir a injustiça do grupo nos três conjuntos de dados, considerando as três estratégias de agrupamento. 
 
-### Funções de Objetivo Social (Social Objective Functions)
+### :balance_scale: Medidas de Justiça <a name="-medidas"/></a>
 
-* Individual fairness (Justiça Individual): a perda do usuário i é a estimativa do erro quadrático médio sobre as classificações conhecidas do usuário i
+* Polarization (Polarização): Para capturar a polarização, buscamos medir a extensão na qual as avaliações dos usuários discordam. Assim, para medir a polarização dos usuários, consideramos as avaliações estimadas \( \hat{X} \), e definimos a métrica de polarização como a soma normalizada das distâncias euclidianas entre pares de avaliações estimadas de usuários, isto é, entre linhas de \( \hat{X} \).
+
+* Individual fairness (Justiça Individual): Para cada usuário \(i\), definimos \(ℓ_i\), a perda do usuário \(i\), como o erro quadrático médio da estimativa sobre as avaliações conhecidas do usuário \(i\):
+
+* Individual fairness (Justiça do Grupo): Justiça de grupo. Seja \(I\) o conjunto de todos os usuários/itens e \(G = \{G_1, ..., G_{g}\}\) uma partição de usuários/itens em \(g\) grupos, isto é, \(I = \cup_{i \in \{1, ..., g\}} G_i\). Definimos a perda do grupo \(i\) como o erro quadrático médio da estimativa sobre todas as avaliações conhecidas no grupo \(i\):
+
+
+
+
+### :chart_with_upwards_trend: Resultados(s) <a name="-resultados"/></a>
+
+<img src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/main/assets/recsys-algorithm-impartiality-1.png" width="700">
+
+<img src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/main/assets/recsys-algorithm-impartiality-2.png" width="700">
+
+<img src="https://github.com/ravarmes/recsys-algorithm-impartiality/blob/main/assets/recsys-algorithm-impartiality-3.png" width="700">
+
 
 ### Arquivos
 
-- AlgorithmImpartiality: implementação da estratégia de equidade para sistemas de recomendação
-- AlgorithmUserFairness: implementação do cálculo das medidas sociais: justiça individual, justiça do grupo e polarização
-- RecSys: implementação da classe genérica para a utilização do sistema de recomendação
-- RecSysALS: implementação do sistema de recomendação baseado em filtragem colaborativa utilizando ALS (mínimos quadrados alternados)
-- RecSysExampleData20Items: implementação de uma matriz de recomendações estimadas (apenas exemplo com valores aleatórios)
-- UserFairness: implementação das funções de objetivo social (polarização, justiça individual e justiça do grupo)
+| Arquivo                               | Descrição                                                                                                                                                                                                                                   |
+|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AlgorithmImpartiality                | Classe para promover justiça nas recomendações de algoritmos de sistemas de recomendação.                                                                                                                                                   |
+| AlgorithmUserFairness                | Classes para medir a justiça (polarização, justiça individual e justiça do grupo) das recomendações de algoritmos de sistemas de recomendação.                                                                                               |
+| RecSys                               | Classe no padrão fábrica para instanciar um sistema de recomendação com base em parâmetros string.                                                                                                                                           |
+| RecSysALS                            | Alternating Least Squares (ALS) para Filtragem Colaborativa é um algoritmo que otimiza iterativamente duas matrizes para melhor prever avaliações de usuários em itens, baseando-se na ideia de fatoração de matrizes.                       |
+| RecSysKNN                            | K-Nearest Neighbors para Sistemas de Recomendação é um método que recomenda itens ou usuários baseando-se na proximidade ou similaridade entre eles, utilizando a técnica dos K vizinhos mais próximos.                                      |
+| RecSysNMF                            | Non-Negative Matrix Factorization para Sistemas de Recomendação utiliza a decomposição de uma matriz de avaliações em duas matrizes de fatores não-negativos, revelando padrões latentes que podem ser usados para prever avaliações faltantes. |
+| RecSysSGD                            | Stochastic Gradient Descent para Sistemas de Recomendação é uma técnica de otimização que ajusta iterativamente os parâmetros do modelo para minimizar o erro nas previsões de avaliações, através de atualizações baseadas em gradientes calculados de forma estocástica. |
+| RecSysSVD                            | Singular Value Decomposition para Sistemas de Recomendação é um método que fatora a matriz de avaliações em três matrizes menores, capturando informações essenciais sobre usuários e itens, o que facilita a recomendação através da reconstrução da matriz original com dados faltantes preenchidos. |
+| RecSysNCF                            | Neural Collaborative Filtering é uma abordagem moderna para filtragem colaborativa que utiliza redes neurais para modelar interações complexas e não-lineares entre usuários e itens, visando aprimorar a qualidade das recomendações.          |
+| TestAlgorithmImpartiality_Age        | Script de teste do algoritmo de imparcialidade (AlgorithmImpartiality) considerando o agrupamento dos usuários por idade (Age).                                                                                                              |
+| TestAlgorithmImpartiality_Age_SaveTXT| Script de teste do algoritmo de imparcialidade (AlgorithmImpartiality) considerando o agrupamento dos usuários por idade (Age) salvando os resultados em arquivo TXT.                                                                        |
+| TestAlgorithmImpartiality_Gender     | Script de teste do algoritmo de imparcialidade (AlgorithmImpartiality) considerando o agrupamento dos usuários por gênero (Gender).                                                                                                          |
+| TestAlgorithmImpartiality_Gender_SaveTXT | Script de teste do algoritmo de imparcialidade (AlgorithmImpartiality) considerando o agrupamento dos usuários por gênero (Gender) salvando os resultados em arquivo TXT.                                                                 |
+| TestAlgorithmImpartiality_NR         | Script de teste do algoritmo de imparcialidade (AlgorithmImpartiality) considerando o agrupamento dos usuários por número de avaliações (NR).                                                                                                |
+| TestAlgorithmImpartiality_NR_SaveTXT | Script de teste do algoritmo de imparcialidade (AlgorithmImpartiality) considerando o agrupamento dos usuários por número de avaliações (NR) salvando os resultados em arquivo TXT.                                                         |
 
-- TestImpartiality_Books_K_G: arquivo para testar a implementação AlgorithmImpartiality com base no conjunto de dados Books com K matrizes estimadas e G grupos (G2: agrupamento 95-5, G3: agrupamento hierárquico)
-
-
-- TestUserFairness_Books: arquivo para testar a implementação UserFairness com base no conjunto de dados Books
-- TestUserFairness_MovieLens_1M: arquivo para testar a implementação UserFairness com base no conjunto de dados MovieLens-1M
-- TestUserFairness_MovieLens_Small: arquivo para testar a implementação UserFairness com base no conjunto de dados MovieLens-Small (40 usuários e 20 itens)
-- TestCluster_Books_01: notebook com a implementação de análise de agrupamento (dendograma e K-means) com base no conjunto de dados Books e nas variáveis justiça individual, idade e localização.
-- TestCluster_Books_02: notebook com a implementação de análise de agrupamento (dendograma e K-means) com base no conjunto de dados Books e na variável justiça individual.
-- TestCluster_MovieLens_1M_01: notebook com a implementação de análise de agrupamento (dendograma e K-means) com base no conjunto de dados MovieLens-1M e nas variáveis justiça individual, idade e ocupação.
-- TestCluster_MovieLens_1M_02: notebook com a implementação de análise de agrupamento (dendograma e K-means) com base no conjunto de dados MovieLens-1M e na variável justiça individual.
-- TestCluster_MovieLens_Small_01: notebook com a implementação de análise de agrupamento (dendograma e K-means) com base no conjunto de dados MovieLens-Small e nas variáveis justiça individual, idade, NA, SPI, MA e MR.
-- TestCluster_MovieLens_Small_02: notebook com a implementação de análise de agrupamento (dendograma e K-means) com base no conjunto de dados MovieLens-Small e na variável justiça individual.
 
 
 ## :memo: Licença <a name="-licenca"/></a>
