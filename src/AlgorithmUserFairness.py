@@ -211,13 +211,9 @@ class RMSE():
         self.X = X.mask(~omega)        
         
     def evaluate(self, X_est):
-        X_not_na = []
-        X_est_not_na = []
-        for i in range(0, len(self.X.index)):
-            for j in range(0, len(self.X.columns)):
-                if (not np.isnan(self.X.iloc[i, j])):
-                    X_not_na.append(self.X.iloc[i, j])
-                    X_est_not_na.append(X_est.iloc[i, j])
-        return mean_squared_error(X_not_na, X_est_not_na, squared=False)
+        X_not_na = self.X.values[~np.isnan(self.X.values)]
+        X_est_not_na = X_est.values[~np.isnan(self.X.values)]
+        
+        return np.sqrt(mean_squared_error(X_not_na, X_est_not_na))
 
 #######################################################################################################################
